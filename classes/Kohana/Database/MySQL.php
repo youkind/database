@@ -58,6 +58,10 @@ class Kohana_Database_MySQL extends Database {
 				// Create a connection and force it to be a new link
 				$this->_connection = mysql_connect($hostname, $username, $password, TRUE);
 			}
+			if ($this->_connection === false)
+			{
+				throw new Exception(mysql_error(), mysql_errno());
+			}
 		}
 		catch (Exception $e)
 		{
